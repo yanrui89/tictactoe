@@ -17,6 +17,7 @@ class tictactoe:
             self.pos[i] = 0
 
         self.used_pos = []
+        self.chke_box = ''
 
     def chk_winner(self, player):
         winning_config = np.array([[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]])
@@ -50,6 +51,15 @@ class tictactoe:
 
         self.used_pos.append(position)
 
+        a = f"""
+        {str(self.pos[1])}   |  {str(self.pos[2])}   |   {str(self.pos[3])}
+        -----------------
+        {str(self.pos[4])}   |  {str(self.pos[5])}   |   {str(self.pos[6])}
+        -----------------
+        {str(self.pos[7])}   |  {str(self.pos[8])}   |   {str(self.pos[9])}
+        """
+
+        print(a)
         valid = 1
 
         return valid

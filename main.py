@@ -1,10 +1,10 @@
 
 import env
 import random
+import algo
 
 
 def main():
-
     #init environment
     ttt = env.tictactoe()
     turn = random.randint(1,2)
@@ -13,10 +13,21 @@ def main():
         
         valid = -1
 
-        while valid == -1:
-            box = input(f'it is player {turn}s turn. Please input the box')
-            valid = ttt.load_pos(int(box))
-            print('the value that you have placed is invalid. Please try again')
+        if turn == 1:
+            while valid == -1:                
+                box = input(f'it is player {turn}s turn. Please input the box \n')
+                print(box)
+                valid = ttt.load_pos(turn,int(box))
+                if valid == -1:
+                    print('the value that you have placed is invalid. Please try again')
+        elif turn == 2:
+            ttt.pos[1] = 2
+            ttt.pos[3] = 1
+            ttt.pos[2] = 2
+            ttt.pos[8] = 1
+            ttt.pos[9] = 2
+            score, state = algo.minmax(ttt.pos, 2)
+            valid = ttt.load_pos(turn, state)
 
         #check winner
         win = ttt.chk_winner(turn)
@@ -24,6 +35,7 @@ def main():
         if win == 1:
             print(f'congratulations player {turn} won')
             print('ending game')
+            break
 
         turn = (turn + 1) % 2
         if turn == 0:
