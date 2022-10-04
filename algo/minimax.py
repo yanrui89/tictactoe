@@ -56,6 +56,7 @@ def minmax(curr_pos, player):
         best_score = 10
 
     for ele in curr_open_set:
+        print(curr_open_set)
         curr_pos[ele] = player
         #check if it's the last element
         open_set = chk_open_set(curr_pos)
@@ -68,6 +69,9 @@ def minmax(curr_pos, player):
             elif winner == 0:
                 score = 0
         else:
+            winner = chk_winner(curr_pos)
+            if winner == 1 or winner == 2:
+                break
             player = (player + 1) % 2
             if player == 0:
                 player = 2

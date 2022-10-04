@@ -2,6 +2,7 @@
 import env
 import random
 import algo
+import copy
 
 
 def main():
@@ -21,12 +22,14 @@ def main():
                 if valid == -1:
                     print('the value that you have placed is invalid. Please try again')
         elif turn == 2:
+            '''
             ttt.pos[1] = 2
             ttt.pos[3] = 1
             ttt.pos[2] = 2
             ttt.pos[8] = 1
             ttt.pos[9] = 2
-            score, state = algo.minmax(ttt.pos, 2)
+            '''
+            score, state = algo.minmax(copy.deepcopy(ttt.pos), 2)
             valid = ttt.load_pos(turn, state)
 
         #check winner
